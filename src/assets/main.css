@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import './base.css';
+@import '../styles/typography.css';
+
+#app {
+  max-width: 100%;
+  font-weight: normal;
+}
