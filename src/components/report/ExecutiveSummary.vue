@@ -26,8 +26,8 @@
           </span> participantes
           que <br /> relatan la realidad de <span class="font-medium">
             <!-- {{ nombre_empresa }} -->
-            S&A Servicios y Asesorías y Serviespeciales
-          </span>.
+            S&A Servicios y Asesorías y Serviespeciales.
+          </span> 
         </p>
       </div>
 
