@@ -22,7 +22,9 @@
                             <div class="flex flex-wrap items-center gap-3 mb-3">
                                 <span v-for="(tag, i) in [item.dueno]" :key="i"
                                     class="px-2 py-0 rounded-full border text-[14px] font-medium bg-[#EFF8FF] border-[#C7D8FF] text-[#175CD3]">
-                                    {{ tag }}
+                                    <!-- {{ tag }} -->
+
+                                    Talento Humano
                                 </span>
 
                                 <span class="flex items-center gap-1 text-sm text-gray-500">
@@ -31,7 +33,8 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    {{ item.horizonte }}
+                                    Corto Plazo
+                                    <!-- {{ item.horizonte }} -->
                                 </span>
                             </div>
 
@@ -42,7 +45,10 @@
 
                             <!-- Primer hito -->
                             <p class="text-[#E93E95] font-normal">PRIMER HITO:
-                                <span class="font-normal text-gray-700">{{ item.primer_hito }}</span>
+                                <span class="font-normal text-gray-700">
+                                    <!-- {{ item.primer_hito }} -->
+                                    Definir la métrica y construir el primer tablero de visualización.
+                                </span>
                             </p>
                         </div>
                     </div>
