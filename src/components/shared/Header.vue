@@ -22,7 +22,7 @@
       </Title>
 
       <Subtitle size="md" color="gray" class="mt-6">
-        {{ nombre_empresa }}
+       S&A Servicios y Asesorías y Serviespeciales
       </Subtitle>
     </div>
   </header>
@@ -32,7 +32,7 @@
 import Title from '@/components/ui/Title.vue'
 import Subtitle from '@/components/ui/Subtitle.vue'
 import TypographyH3 from '../ui/TypographyH3.vue'
-const nombre_empresa = "Nombre de la empresa"
+//const nombre_empresa = "Nombre de la empresa"
 </script>
 
 <style scoped>

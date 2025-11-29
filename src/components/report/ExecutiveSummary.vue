@@ -20,8 +20,14 @@
 
          <p class="text-gray-500 italic text-[15px] mt-3 text-center">
           Principales hallazgos de las entrevistas realizadas en
-          <span class="font-medium">{{ numero_participantes }}</span> participantes
-          que <br /> relatan la realidad de <span class="font-medium">{{ nombre_empresa }}</span>.
+          <span class="font-medium">
+            <!-- {{ numero_participantes }} -->
+            57
+          </span> participantes
+          que <br /> relatan la realidad de <span class="font-medium">
+            <!-- {{ nombre_empresa }} -->
+            S&A Servicios y Asesorías y Serviespeciales
+          </span>.
         </p>
       </div>
 
