@@ -2,10 +2,7 @@
   <div>
     <Header />
 
-    <!-- LOADING -->
-    <div v-if="loading" class="text-center py-10 text-gray-500">
-      Cargando reporte...
-    </div>
+    <SpinnerOverlay v-if="loading" />
 
     <!-- ERROR -->
     <div v-if="error" class="text-center py-10 text-red-600">
@@ -14,31 +11,33 @@
 
     <!-- CONTENIDO -->
     <div v-if="data.status">
-      <ExecutiveSummary  />
-      <StrategicBets  />
+      <ExecutiveSummary />
+      <StrategicBets />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 import Header from '@/components/shared/Header.vue'
 import ExecutiveSummary from '@/components/report/ExecutiveSummary.vue'
 import StrategicBets from '@/components/report/StrategicBets.vue'
-
 import { useFetchData } from '@/composables/useFetchData'
 import { useReportContext } from '@/composables/useReportContext'
+import SpinnerOverlay from '@/components/ui/SpinnerOverlay.vue'
 
-// ROUTE PARAMS
 const route = useRoute()
 const id = route.params.id as string
 const tipo = route.params.tipo as string
 
+const loading = ref(true)
+const minLoadTime = 1000 // 1 segundo mínimo
+const startTime = Date.now()
+
 // GLOBAL STORE
 const reportStore = useReportContext()
-const { data, loading, error } = reportStore
-
+const { data, error, setLoading } = reportStore
 
 // SELECCIONAR REPORTE ACTUAL
 reportStore.setCurrentReport(id, tipo)
@@ -46,24 +45,35 @@ reportStore.setCurrentReport(id, tipo)
 // REVISAR SI YA EXISTE EN CACHE GLOBAL
 const cached = reportStore.getCachedReport(id, tipo)
 
+function finalizeLoading() {
+  const elapsed = Date.now() - startTime
+  const remaining = Math.max(0, minLoadTime - elapsed)
+
+  setTimeout(() => {
+    loading.value = false
+  }, remaining)
+}
+
 if (!cached) {
   // NO EXISTE → HACER FETCH
   const { data: fetchedData, error: fetchError, loading: fetchLoading } = useFetchData(id, tipo)
 
-  // REACCIONAR A LOS CAMBIOS DEL FETCH
   watchEffect(() => {
     reportStore.setLoading(fetchLoading.value)
 
     if (fetchedData.value) {
       reportStore.saveReport(id, tipo, fetchedData.value)
+      finalizeLoading()
     }
 
     if (fetchError.value) {
       reportStore.setError(fetchError.value)
+      finalizeLoading()
     }
   })
 } else {
-  // SÍ EXISTE → USAR CACHE
+  // EXISTE EN CACHE
   console.log("⚡ Reporte cargado desde cache global:", cached)
+  finalizeLoading()
 }
 </script>

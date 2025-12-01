@@ -34,7 +34,7 @@ export const useReportContext = createGlobalState(() => {
   // Guarda todos los reportes cacheados
   const cachedReports = useStorage<CachedReports>('global-report-cache', {})
 
-  const loading = ref(false)
+  const loading = ref(true)
   const error = ref<string | null>(null)
 
   // Reporte activo (el último seleccionado)
