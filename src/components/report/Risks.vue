@@ -1,6 +1,6 @@
 <template>
   <section class="w-full flex">
-    <div class="w-full max-w-[99%]  2xl:max-w-[80%] flex justify-end bg-white p-6 mr-[40px] 2xl:mr-[100px]">
+    <div class="w-full max-w-[99%]  2xl:max-w-[80%] flex justify-end bg-white p-6 mr-[40px] 2xl:mr-[100px] py-10">
       <div class="w-full max-w-[99%] 2xl:max-w-[80%]">
 
         <!-- ICONO + TÍTULO -->

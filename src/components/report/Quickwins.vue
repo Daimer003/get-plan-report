@@ -1,6 +1,6 @@
 <template>
     <div class="w-full flex">
-        <div class="w-full max-w-[99%]  2xl:max-w-[80%] flex justify-start bg-white p-6 ml-[40px] 2xl:ml-[600px]">
+        <div class="w-full max-w-[99%]  2xl:max-w-[80%] flex justify-start bg-white p-6 ml-[40px] 2xl:ml-[600px] py-10">
             <div class="w-full w-[99%] 2xl:w-[80%]">
 
 
